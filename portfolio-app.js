@@ -16,11 +16,10 @@ function init(dev){
     return Promise.all([
         appendStyle('https://cdn.jsdelivr.net/npm/@quasar/extras/material-icons/material-icons.css'),
         appendStyle('https://cdn.jsdelivr.net/npm/quasar/dist/quasar.min.css'),
-        import('https://cdn.jsdelivr.net/npm/vue'),
-        import('https://cdn.jsdelivr.net/npm/quasar/dist/quasar.umd.min.js')
-    ]).then(() => Promise.all([
-        import(baseUrl+'/components/app.component.js')
-    ]))
+    ])
+    .then(() => import('https://cdn.jsdelivr.net/npm/vue'))
+    .then(() => import('https://cdn.jsdelivr.net/npm/quasar/dist/quasar.umd.min.js'))
+    .then(() => import(baseUrl+'/components/app.component.js'))
 
 }
 window.onload = function () {
