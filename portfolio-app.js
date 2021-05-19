@@ -6,5 +6,5 @@ function importDependencies(dev){
 }
 
 importDependencies(true).then((portfolio_module) => {
-  console.log('app loaded')
+  console.log('app loaded', portfolio_module)
 })
