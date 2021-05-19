@@ -1,0 +1,22 @@
+{
+  "name": "portfolio-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "npm start",
+  "scripts": {
+    "start": "browser-sync start -s . -f ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kospiotr/portfolio-app.git"
+  },
+  "author": "Piotr Kosmowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kospiotr/portfolio-app/issues"
+  },
+  "homepage": "https://github.com/kospiotr/portfolio-app#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.14"
+  }
+}
