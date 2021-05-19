@@ -19,7 +19,7 @@ Vue.component('app', {
         }
     },
     created: function(){
-        this.data = fetch("https://gft365.sharepoint.com/sites/testowa/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Ftestowa%2FLists%2Fportfoliodata%27", {
+        fetch("https://gft365.sharepoint.com/sites/testowa/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Ftestowa%2FLists%2Fportfoliodata%27", {
           "headers": {
 
             "content-type": "application/json;odata=verbose",
@@ -29,7 +29,7 @@ Vue.component('app', {
           "method": "POST"
         }).then(response => response.json()).then(data => data.Row.map((row) => {
             return {id: row.ID, title: row.Title}
-        }))
+        })).then( data => {this.data = data})
     },
     template: `
 <q-layout view="hHh lpR fFf">
