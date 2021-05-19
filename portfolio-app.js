@@ -5,7 +5,8 @@ function importDependencies(dev){
   ])
 }
 
-importDependencies(true).then((portfolio_module) => {
-  console.log('app loaded', portfolio_module)
-  portfolio_module.hello('Kosmo')
+importDependencies(true).then(modules => {
+  var [portfolio_module] = modules
+  console.log('app loaded', modules)
+  portfolio_module.hello("kosmo")
 })
