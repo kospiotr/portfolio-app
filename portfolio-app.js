@@ -7,4 +7,5 @@ function importDependencies(dev){
 
 importDependencies(true).then((portfolio_module) => {
   console.log('app loaded', portfolio_module)
+  portfolio_module.hello('Kosmo')
 })
