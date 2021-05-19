@@ -18,18 +18,23 @@ Vue.component('app', {
 
         }
     },
+    methods: {
+        load: function(){
+                fetch("https://gft365.sharepoint.com/sites/testowa/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Ftestowa%2FLists%2Fportfoliodata%27", {
+                  "headers": {
+
+                    "content-type": "application/json;odata=verbose",
+
+                  },
+                  "body": "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"}}}",
+                  "method": "POST"
+                }).then(response => response.json()).then(data => data.Row.map((row) => {
+                    return {id: row.ID, title: row.Title}
+                })).then( data => {this.data = data})
+
+        }
+    },
     created: function(){
-        fetch("https://gft365.sharepoint.com/sites/testowa/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Ftestowa%2FLists%2Fportfoliodata%27", {
-          "headers": {
-
-            "content-type": "application/json;odata=verbose",
-
-          },
-          "body": "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"}}}",
-          "method": "POST"
-        }).then(response => response.json()).then(data => data.Row.map((row) => {
-            return {id: row.ID, title: row.Title}
-        })).then( data => {this.data = data})
     },
     template: `
 <q-layout view="hHh lpR fFf">
@@ -69,12 +74,16 @@ Vue.component('app', {
     </q-drawer>
 
     <q-page-container>
-      <q-table
-            title="Treats"
+        <q-table
+            title="Projects"
             :data="data"
             :columns="columns"
-            row-key="name"
-          />
+            row-key="id"
+        >
+            <template v-slot:top>
+                <q-btn color="white" text-color="black" label="Load" @click="load()"/>
+            </template>
+        </q-table>
     </q-page-container>
 
   </q-layout>
