@@ -28,7 +28,21 @@ window.onload = function () {
     init(is_dev)
         .then(modules => {
             new Vue({
-                el: '#q-app'
+                el: '#q-app',
+                methods: {
+                    load: function(){
+                        fetch("/sites/testowa/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Ftestowa%2FLists%2Fportfoliodata%27", {
+                          "headers": {
+                            "content-type": "application/json;odata=verbose",
+                          },
+                          "body": "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"},\"RenderOptions\":1183751,\"AllowMultipleValueFilterForTaxonomyFields\":true,\"AddRequiredFields\":true}}",
+                          "method": "POST"
+                        }).then(response => response.json()).then(data => console.log(data))
+                    }
+                },
+                created: function() {
+                        this.load();
+                }
             })
         })
 
