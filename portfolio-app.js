@@ -1,6 +1,10 @@
-alert('test')
-console.log('after')
-  import('https://kospiotr.github.io/portfolio-app/portfolio-module.js').then(module => {
-    console.log('in module')
-      module.hello('world with Kosmo');
-    });
+function importDependencies(dev){
+  baseUrl = dev ? 'https://raw.githack.com/kospiotr/portfolio-app' : 'https://kospiotr.github.io/portfolio-app'
+  return Promise.all([
+    import(baseUrl+'/portfolio-module.js')
+  ])
+}
+
+importDependencies(true).then(() => {
+  console.log('app loaded')
+})
