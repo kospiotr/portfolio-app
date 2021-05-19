@@ -1,4 +1,4 @@
-function importDependencies(dev){
+function init(dev){
   baseUrl = dev ? '.' : 'https://kospiotr.github.io/portfolio-app'
 
   function appendStyle(url){
@@ -16,7 +16,8 @@ function importDependencies(dev){
     appendStyle('https://cdn.jsdelivr.net/npm/quasar/dist/quasar.min.css'),
   ])
 }
-importDependencies(true).then(modules => {
+
+init(window.is_dev).then(modules => {
   var [vue, quasar, portfolio_module] = modules
 
   new Vue({
