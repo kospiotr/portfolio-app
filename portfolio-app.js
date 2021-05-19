@@ -1,22 +1,3 @@
-Promise.retry = function(fn, times, delay) {
-    return new Promise(function(resolve, reject){
-        var error;
-        var attempt = function() {
-            if (times == 0) {
-                reject(error);
-            } else {
-                fn().then(resolve)
-                    .catch(function(e){
-                        times--;
-                        error = e;
-                        setTimeout(function(){attempt()}, delay);
-                    });
-            }
-        };
-        attempt();
-    });
-};
-
 function init(dev){
   baseUrl = dev ? '.' : 'https://kospiotr.github.io/portfolio-app'
 
@@ -36,19 +17,26 @@ function init(dev){
   ]))
 
 }
+window.onload = function () {
+   document.body.innerHTML = `
+   <div id="q-app">
+     <app></app>
+   </div>
+   `;
+   init(window.is_dev).then(modules => {
+     new Vue({
+       el: '#q-app',
+       data: function () {
+         return {
+           version: Quasar.version
+         }
+       },
+       methods: {
+       	notify: function () {
+           this.$q.notify('Running on Quasar v' + this.$q.version)
+         }
+     	}
+     })
+   })
 
-init(window.is_dev).then(modules => {
-  new Vue({
-    el: '#q-app',
-    data: function () {
-      return {
-        version: Quasar.version
-      }
-    },
-    methods: {
-    	notify: function () {
-        this.$q.notify('Running on Quasar v' + this.$q.version)
-      }
-  	}
-  })
-})
+}
