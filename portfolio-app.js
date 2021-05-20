@@ -24,7 +24,7 @@ function init(dev){
 }
 window.onload = function () {
     let is_dev = window.is_dev
-    normalize()
+//    normalize()
     init(is_dev)
         .then(modules => {
             new Vue({
