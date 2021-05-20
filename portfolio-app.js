@@ -22,19 +22,18 @@ function init(dev){
     .then(() => import(baseUrl+'/components/app.component.js'))
 
 }
-window.onload = function () {
-    let is_dev = window.is_dev
+
+let is_dev = window.is_dev
 //    normalize()
-    init(is_dev)
-        .then(modules => {
-            new Vue({
-                el: '#q-app',
-                methods: {
+init(is_dev)
+    .then(modules => {
+        new Vue({
+            el: '#q-app',
+            methods: {
 
-                },
-                created: function() {
-                }
-            })
+            },
+            created: function() {
+            }
         })
+    })
 
-}
