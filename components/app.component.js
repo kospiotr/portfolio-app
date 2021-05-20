@@ -39,16 +39,6 @@ Vue.component('app', {
     template: `
 <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-primary text-white">
-      <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="left = !left" />
-
-        <q-toolbar-title>
-          Portfolio
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
-
     <q-drawer show-if-above v-model="left" side="left" elevated>
       <div>
            <q-list dense padding class="rounded-borders">

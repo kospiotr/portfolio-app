@@ -7,6 +7,7 @@ function normalize(){
 }
 
 function init(dev){
+
     baseUrl = dev ? '.' : 'https://kospiotr.github.io/portfolio-app'
 
     function  appendStyle(url){
