@@ -27,15 +27,15 @@ function init(dev){
 
 let is_dev = window.is_dev
 normalize()
-init(is_dev)
-    .then(modules => {
-        new Vue({
-            el: '#q-app',
-            methods: {
-
-            },
-            created: function() {
-            }
-        })
-    })
+//init(is_dev)
+//    .then(modules => {
+//        new Vue({
+//            el: '#q-app',
+//            methods: {
+//
+//            },
+//            created: function() {
+//            }
+//        })
+//    })
 
